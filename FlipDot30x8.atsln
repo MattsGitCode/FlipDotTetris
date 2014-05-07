@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "FlipDot30x8", "FlipDot30x8\FlipDot30x8.cppproj", "{D55AAC75-51BB-4326-AA25-87F2C88A4382}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D55AAC75-51BB-4326-AA25-87F2C88A4382}.Debug|AVR.ActiveCfg = Debug|AVR
+		{D55AAC75-51BB-4326-AA25-87F2C88A4382}.Debug|AVR.Build.0 = Debug|AVR
+		{D55AAC75-51BB-4326-AA25-87F2C88A4382}.Release|AVR.ActiveCfg = Release|AVR
+		{D55AAC75-51BB-4326-AA25-87F2C88A4382}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
