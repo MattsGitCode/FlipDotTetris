@@ -5,16 +5,23 @@
 #define HARDWARECONFIGURATION_H_
 
 
-#define PIN_FUNCS(NAME, PORT, PIN) \
+#define OUTPIN_FUNCS(NAME, PORT, PIN) \
 inline void NAME##PinHigh() { PORT |= (1 << PIN); } \
 inline void NAME##PinLow() { PORT &= ~(1 << PIN); } \
 inline void NAME##Pin(const bool &state) { if (state) NAME##PinHigh(); else NAME##PinLow(); }
 
+#define INPIN_FUNCS(NAME, PORT, PIN) \
+inline bool read##NAME##Pin() { return PORT & (1 << PIN); }
 
-PIN_FUNCS(displayData, PORTD, PORTD2)
-PIN_FUNCS(displayClock, PORTD, PORTD0)
-PIN_FUNCS(displayLatch, PORTD, PORTD1)
-PIN_FUNCS(displayOutputEnable, PORTD, PORTD3)
+
+OUTPIN_FUNCS(displayData, PORTD, PORTD2)
+OUTPIN_FUNCS(displayClock, PORTD, PORTD0)
+OUTPIN_FUNCS(displayLatch, PORTD, PORTD1)
+OUTPIN_FUNCS(displayOutputEnable, PORTD, PORTD3)
+
+INPIN_FUNCS(RotateButton, PINC, PINC1)
+INPIN_FUNCS(LeftButton, PINC, PINC2)
+INPIN_FUNCS(RightButton, PINC, PINC0)
 
 inline void configurePorts()
 {

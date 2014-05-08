@@ -28,6 +28,16 @@ public:
 		rotationPhase = nextRotationPhase(rotationPhase);
 	}
 	
+	inline void MoveLeft()
+	{
+		x -= 1;
+	}
+	
+	inline void MoveRight()
+	{
+		x += 1;
+	}
+	
 	inline void Fall()
 	{
 		y += 1;

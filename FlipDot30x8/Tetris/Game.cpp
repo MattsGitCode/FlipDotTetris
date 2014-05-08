@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "../Hardware/HardwareConfiguration.h"
 
 const uint16_t LevelTetriminoFallRate[] = {
 	500,
@@ -8,9 +9,17 @@ const uint16_t LevelTetriminoFallRate[] = {
 };
 
 Game::Game()
-	: well(), level(0), lastFallTime(0)
+	: well(), level(0), lastFallTime(0),
+	buttonStates(0),
+	buttonPinStateFunctions {
+		&readLeftButtonPin, &readRightButtonPin,
+		&readRotateButtonPin
+	},
+	buttonCallbacks {
+		&Game::MoveLeftPressed, &Game::MoveRightPressed,
+		&Game::RotatePressed
+	}
 {
-	
 }
 
 Game::~Game()
@@ -25,6 +34,8 @@ void Game::Draw(Buffer &buffer) const
 
 void Game::Tick(const uint32_t milliseconds)
 {
+	ProcessInputs();
+	
 	auto fallRate = LevelTetriminoFallRate[level];
 	auto nextFallTime = lastFallTime + fallRate;
 	if (milliseconds >= nextFallTime)
@@ -41,4 +52,49 @@ void Game::Tick(const uint32_t milliseconds)
 			tetrimino.Randomise();
 		}
 	}
+}
+
+void Game::ProcessInputs()
+{
+// 	bool pinState = readRotateButtonPin();
+// 	if (pinState && !justRotated)
+// 	{
+// 		tetrimino.Rotate();
+// 		justRotated = true;
+// 	}
+// 	else if (!pinState && justRotated)
+// 	{
+// 		justRotated = false;
+// 	}
+
+	for (int i = 0; i < 3; ++i)
+	{
+		bool pinState = buttonPinStateFunctions[i]();
+		bool buttonState = buttonStates & (1UL << i);
+		if (pinState && !buttonState)
+		{
+			(*this.*(buttonCallbacks[i]))();
+			buttonStates |= (1UL << i);
+		}
+		else if (!pinState && buttonState)
+		{
+			buttonStates &= ~(1UL << i);
+		}
+	}
+	
+}
+
+void Game::MoveLeftPressed()
+{
+	tetrimino.MoveLeft();
+}
+
+void Game::MoveRightPressed()
+{
+	tetrimino.MoveRight();
+}
+
+void Game::RotatePressed()
+{
+	tetrimino.Rotate();
 }

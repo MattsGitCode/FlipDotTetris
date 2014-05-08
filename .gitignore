@@ -51,3 +51,8 @@
 
 # Atmel
 *.atsuo
+*.d
+*.eep
+*.lss
+*.map
+*.srec
