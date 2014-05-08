@@ -56,17 +56,6 @@ void Game::Tick(const uint32_t milliseconds)
 
 void Game::ProcessInputs()
 {
-// 	bool pinState = readRotateButtonPin();
-// 	if (pinState && !justRotated)
-// 	{
-// 		tetrimino.Rotate();
-// 		justRotated = true;
-// 	}
-// 	else if (!pinState && justRotated)
-// 	{
-// 		justRotated = false;
-// 	}
-
 	for (int i = 0; i < 3; ++i)
 	{
 		bool pinState = buttonPinStateFunctions[i]();

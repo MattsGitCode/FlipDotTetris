@@ -22,11 +22,6 @@ void Buffer::SetDot(const int8_t &x, const int8_t &y, const bool &on)
 {
 	int8_t dstX = x;
 	int8_t dstY = y;
-	//if (rotate)
-	//{
-		//dstX = 29 - y;
-		//dstY = x;
-	//}
 	TranslateCoordinates(dstX, dstY);
 	
 	if (dstX > 29 || dstY > 7)
