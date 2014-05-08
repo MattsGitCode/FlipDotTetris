@@ -45,6 +45,9 @@ public:
 	
 	void Randomise();
 	bool CanFall(const Well &well) const;
+	bool CanRotate(const Well &well) const;
+	bool CanMoveLeft(const Well &well) const;
+	bool CanMoveRight(const Well &well) const;
 protected:
 private:
 	Tetrimino& operator=( const Tetrimino &c );

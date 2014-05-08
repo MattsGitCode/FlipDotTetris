@@ -20,6 +20,10 @@ public:
 	{
 		return rows.IsSet(x, y);
 	}
+	
+	uint32_t GetRowsToClear();
+	bool IncrementRowClear(const uint32_t &rowsToClear);
+	
 protected:
 private:
 	Well( const Well &c );

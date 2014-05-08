@@ -30,6 +30,11 @@ public:
 		return columns[x] & (1UL << y);
 	}
 	
+	inline uint8_t (&GetData())[30]
+	{
+		return columns;
+	}
+	
 protected:
 private:
 	Buffer( const Buffer &c );

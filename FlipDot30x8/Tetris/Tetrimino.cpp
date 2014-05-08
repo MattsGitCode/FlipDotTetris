@@ -64,7 +64,7 @@ void Tetrimino::Draw(Buffer &buffer) const
 
 void Tetrimino::Randomise()
 {
-	y = 0;
+	y = -4;
 	x = 3;
 	shape = (TetriminoShape)(rand() / (RAND_MAX / 8));
 }
@@ -72,4 +72,19 @@ void Tetrimino::Randomise()
 bool Tetrimino::CanFall(const Well &well) const
 {
 	return Rotations[(uint8_t)shape][rotationPhase].IsValid(well, x, y + 1);
+}
+
+bool Tetrimino::CanMoveLeft(const Well &well) const
+{
+	return Rotations[(uint8_t)shape][rotationPhase].IsValid(well, x - 1, y);
+}
+
+bool Tetrimino::CanMoveRight(const Well &well) const
+{
+	return Rotations[(uint8_t)shape][rotationPhase].IsValid(well, x + 1, y);
+}
+
+bool Tetrimino::CanRotate(const Well &well) const
+{
+	return Rotations[(uint8_t)shape][nextRotationPhase(rotationPhase)].IsValid(well, x, y);
 }
