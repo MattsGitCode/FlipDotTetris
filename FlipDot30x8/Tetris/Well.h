@@ -7,7 +7,7 @@ class Tetrimino;
 class Well
 {
 	Buffer rows;
-	uint8_t height;
+	int8_t height;
 
 //functions
 public:
@@ -21,8 +21,11 @@ public:
 		return rows.IsSet(x, y);
 	}
 	
+	void ClearAll();
+	
 	uint32_t GetRowsToClear();
 	bool IncrementRowClear(const uint32_t &rowsToClear);
+	bool IncrementGravity();
 	
 protected:
 private:

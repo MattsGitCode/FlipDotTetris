@@ -54,7 +54,7 @@ private:
 
 	inline static uint8_t nextRotationPhase(const uint8_t &after)
 	{
-		return after == 3 ? 0 : after + 1;
+		return after == 3 ? 0 : (after + 1);
 	}
 };
 

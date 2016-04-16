@@ -16,18 +16,23 @@ class Game
 	{
 		Playing,
 		ClearingRow,
+		Gravity,
+		NextLevel,
 	};
-	GameStateCallback gameStateMap[2] = {
+	GameStateCallback gameStateMap[4] = {
 		&Game::StatePlaying,
 		&Game::StateClearingRow,
+		&Game::StateGravity,
+		&Game::StateNextLevel,
 	};
 	GameState state;
 
 	// StatePlaying	
 	Well well;
 	Tetrimino tetrimino;
-	uint8_t level = 1;
+	uint8_t level = 0;
 	uint32_t lastFallTime = 0;
+	uint8_t score = 0;
 	
 	uint8_t buttonStates = 0;
 	struct
@@ -44,7 +49,9 @@ class Game
 	// StateClearingRow
 	uint32_t rowsToClear;
 	uint32_t lastClearIncrementTime = 0;
-		
+	
+	// StateGravity
+	uint32_t lastGravityIncrementTime = 0;
 
 public:
 	Game();
@@ -66,6 +73,8 @@ private:
 	void ProcessRowClears();
 	
 	void StateClearingRow(const uint32_t &milliseconds);
+	void StateGravity(const uint32_t &milliseconds);
+	void StateNextLevel(const uint32_t &milliseconds);
 };
 
 #endif //__GAME_H__

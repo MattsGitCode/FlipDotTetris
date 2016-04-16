@@ -16,6 +16,7 @@ ISR(TIMER1_COMPA_vect)
 
 int main(void)
 {
+	
 	clock_prescale_set(clock_div_1);
 	configurePorts();
 	timer1EnableCtcMode(124);
@@ -24,7 +25,9 @@ int main(void)
 	
 	
 	Display display;
+	//display.SetDot(1, 1, true);
 	display.Reset();
+	
 	
 	Buffer buffer(true);
 

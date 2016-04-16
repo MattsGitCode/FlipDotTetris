@@ -26,6 +26,8 @@ public:
 		int8_t x = testX;
 		int8_t y = testY;
 		TranslateCoordinates(x, y);
+		if (y > 7 || x > 29)
+			return false;
 		
 		return columns[x] & (1UL << y);
 	}

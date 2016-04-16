@@ -66,7 +66,8 @@ void Tetrimino::Randomise()
 {
 	y = -4;
 	x = 3;
-	shape = (TetriminoShape)(rand() / (RAND_MAX / 8));
+	shape = (TetriminoShape)(rand() / (RAND_MAX / 7));
+	rotationPhase = 0;
 }
 
 bool Tetrimino::CanFall(const Well &well) const
